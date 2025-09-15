@@ -1,21 +1,22 @@
 /**
  * Welcome to Cloudflare Workers! This is your first worker.
- *
- * - Run `npm run dev` in your terminal to start a development server
- * - Open a browser tab at http://localhost:8787/ to see your worker in action
- * - Run `npm run deploy` to publish your worker
- *
- * Bind resources to your worker in `wrangler.jsonc`. After adding bindings, a type definition for the
- * `Env` object can be regenerated with `npm run cf-typegen`.
- *
- * Learn more at https://developers.cloudflare.com/workers/
  */
-import { sql } from 'waddler/clickhouse';
 
-sql`SELECT 1`;
+// #region Standalone sql query builder for D1
+import { sql } from 'waddler/d1';
 
+const _statement = sql`SELECT 1`.toSQL();
+// #endregion Standalone sql query builder for D1
+
+// #region This section causes the worker to fail
+import { SQLValues } from 'waddler';
+
+const _test = new SQLValues([]);
+// #endregion This section causes the worker to fail
+
+// Exported Worker
 export default {
-	async fetch(request, env, ctx): Promise<Response> {
+	async fetch(): Promise<Response> {
 		return new Response('Hello World!');
 	},
 } satisfies ExportedHandler<Env>;

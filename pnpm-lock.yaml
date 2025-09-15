@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@clickhouse/client':
-        specifier: ^1.12.1
-        version: 1.12.1
       waddler:
         specifier: ^0.1.1
         version: 0.1.1(@clickhouse/client@1.12.1)
@@ -1138,11 +1135,13 @@ packages:
 
 snapshots:
 
-  '@clickhouse/client-common@1.12.1': {}
+  '@clickhouse/client-common@1.12.1':
+    optional: true
 
   '@clickhouse/client@1.12.1':
     dependencies:
       '@clickhouse/client-common': 1.12.1
+    optional: true
 
   '@cloudflare/kv-asset-handler@0.4.0':
     dependencies:

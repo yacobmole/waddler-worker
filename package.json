@@ -16,7 +16,6 @@
 		"wrangler": "^4.37.0"
 	},
 	"dependencies": {
-		"@clickhouse/client": "^1.12.1",
 		"waddler": "^0.1.1"
 	}
 }
