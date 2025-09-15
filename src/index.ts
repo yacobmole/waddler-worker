@@ -10,6 +10,9 @@
  *
  * Learn more at https://developers.cloudflare.com/workers/
  */
+import { sql } from 'waddler/clickhouse';
+
+sql`SELECT 1`;
 
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
